@@ -1,4 +1,5 @@
 from linear_regression import analyze_complexity, best_complexity_model
+from plot_fit import plot_fit
 
 '''
 Program logic: 
@@ -61,6 +62,17 @@ def main():
     print(f"O(n log n): r^2 = {results["O(n log n)"]["r2"]:.4f}")
     print(f"O(n^2):     r^2 = {results["O(n^2)"]["r2"]:.4f}")
     print(f"\nBest fit:   {best_model}")
+
+    while True:
+        ans = input("\nDo you want to plot the fitted curves? (y/n): ").strip().lower()
+        if ans in ("y", "yes"):
+            plot_fit(algorithm_name, n_values, t_values, results)
+            break
+        elif ans in ("n", "no"):
+            print("Exiting program.")
+            break
+        else:
+            print("Please answer with 'y' or 'n'.")
 
 if __name__ == "__main__":
     main()
