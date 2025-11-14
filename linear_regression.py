@@ -60,6 +60,18 @@ def analyze_complexity(n_values, t_values):
 
     return results
 
+def best_complexity_model(results):
+    """
+    Given the results dictionary from analyze_complexity(),
+    return (best_model_name, best_R2_value).
+    """
+    best_model, best_R2 = max(
+        ((name, info["R2"]) for name, info in results.items()),
+        key=lambda x: x[1]
+    )
+    return best_model, best_R2
+
+
 if __name__ == "__main__":
     n_values = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000]
     t_values = [0.3,0.6,1.2,1.9,3.0,4.1,5.3,6.9,8.4,9.6]
