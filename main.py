@@ -1,5 +1,26 @@
 from linear_regression import analyze_complexity, best_complexity_model
 
+'''
+Program logic: 
+
+We get a bunch of data points from an algorithm: input time (n), runtime (t) for n.
+
+Define: 
+C(n) - the time complexity of the algorithm.
+f(n) - an "actual complexity", for example log n, n^2 etc.
+
+The goal is to find the f(n) which best suits C(n)
+
+For all the different f(n): 
+Plot x = f(n) against y = C(n) and get a curve:
+C(n) = a * f(n) + b (where a and b are constants)
+We then perform linear regression on the curve and extract the coefficient of determination r^2.
+
+r^2 explains the variance in the data points:
+The best candidate of C(n) is the f(n) with the r^2 closest to 1.0.
+
+'''
+
 def parse_list(input_list):
     numbers = input_list.split(",")
     values = []
@@ -16,6 +37,7 @@ def main():
         algorithm_name = "Unnamed algorithm"
     
     print(f"\nThe input size, n, for {algorithm_name} is needed.")
+    print("\nMake sure that delta n is the same for all n")
     print("\n(n can for example be the number of elements in the list you're sorting)")
     print("\nExpected format:")
     print("n: 1,2,3,4,5")
